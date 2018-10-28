@@ -337,11 +337,11 @@ hr {
 
   // Colors for all 11 states, false = no special color
   $special-colors: #ffffff true, // 2
-                   #ffffff true, // 4
-                   #f78e48 true, // 8
-                   #fc5e2e true, // 16
-                   #ff3333 true, // 32
-                   #ff0000 true, // 64
+                   false true, // 4
+                   false true, // 8
+                   false true, // 16
+                   false true, // 32
+                   false true, // 64
                    false true, // 128
                    false true, // 256
                    false true, // 512
