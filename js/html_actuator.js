@@ -5,6 +5,23 @@ function HTMLActuator() {
   this.messageContainer = document.querySelector(".game-message");
 
   this.score = 0;
+  this.addGameLevelOption();
+}
+
+HTMLActuator.prototype.addGameLevelOption = function(){
+  var gameLevelDiv = document.getElementById("game-level-div");
+  var selectList = document.createElement("select");
+  selectList.id = "game-level";
+  gameLevelDiv.appendChild(selectList);
+  selectList.setAttribute("class", "game-level-button");
+
+  //Create and append the options
+  for (var i = 1; i <= 3; i++) {
+      var option = document.createElement("option");
+      option.value = i;
+      option.text = "Level "+i;
+      selectList.appendChild(option);
+  }
 }
 
 HTMLActuator.prototype.actuate = function (grid, metadata) {

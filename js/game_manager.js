@@ -33,8 +33,8 @@ GameManager.prototype.isGameTerminated = function () {
 
 // Set up the game
 GameManager.prototype.setup = function () {
-  var previousState = this.storageManager.getGameState();
 
+  var previousState = this.storageManager.getGameState();
   // Reload the game from a previous game if present
   if (previousState) {
     this.grid        = new Grid(previousState.grid.size,
@@ -67,8 +67,29 @@ GameManager.prototype.addStartTiles = function () {
 
 // Adds a tile in a random position
 GameManager.prototype.addRandomTile = function () {
+
+  var selectedLevel = document.getElementById("game-level");
+  var gameLevelNumber = selectedLevel.options[selectedLevel.selectedIndex].value;
+
+  
   if (this.grid.cellsAvailable()) {
-    var value = Math.random() < 0.9 ? 2 : 4;
+    if(gameLevelNumber == 1){
+      var value = Math.random() < 0.9 ? 2 : 4;
+    
+    }else if(gameLevelNumber == 2){
+      var value = Math.random() < 0.5 ? 2 : 4;
+    
+    }else if(gameLevelNumber == 3){
+      var value = Math.random();
+      if(value <= 0.25 || value > 0.75) {
+        value = 2;
+      }else if(value <= 0.5 && value > 0.25){
+        value = 4;
+      }else if(value <= 0.75 && value > 0.5){
+        value = 8;
+      }
+    
+    }
     var tile = new Tile(this.grid.randomAvailableCell(), value);
 
     this.grid.insertTile(tile);
